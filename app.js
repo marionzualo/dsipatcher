@@ -40,6 +40,7 @@ io.configure(function () {
 io.sockets.on('connection', function (socket) {
 	socket.on('contact-server', function (data) {
 		console.log('received ' + data);
-		io.sockets.emit('contact-client',{ msg : data});
+    var json = JSON.parse(data);
+		io.sockets.emit('contact-client', json);
 	});
 });
